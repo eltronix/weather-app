@@ -5,5 +5,5 @@ from api import views
 from . import views
 
 urlpatterns = [
-    path('locations/<str:city>/', views.WeatherDetail.as_view()),
+    path('locations/<str:city>/', views.ForecastDetail.as_view(), name="forecasts"),
 ]

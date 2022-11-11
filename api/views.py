@@ -1,11 +1,11 @@
-from rest_framework import viewsets
-from .serializers import WeatherSerializer, WeatherInputSerializer
+from rest_framework import viewsets, status
+from .serializers import ForecastSerializer, ForecastInputSerializer
 from .services import WeatherService
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from django.http import Http404
 
-
-class WeatherDetail(APIView):
+class ForecastDetail(APIView):
 
     def get(self, request, city):
         input_data = {
@@ -13,11 +13,14 @@ class WeatherDetail(APIView):
             "days": request.query_params.get("days", 1)
         }
 
-        inputSerializer = WeatherInputSerializer(data = input_data)
+        inputSerializer = ForecastInputSerializer(data = input_data)
         inputSerializer.is_valid(raise_exception=True)
         
-        data = WeatherService.fetchForecast(**inputSerializer.data)
+        try:
+            data = WeatherService.fetch_forecast(**inputSerializer.data)
+        except:
+            raise Http404
 
-        serializer = WeatherSerializer(data=data)
+        serializer = ForecastSerializer(data=data)
         serializer.is_valid(raise_exception=True)
         return Response(serializer.data)

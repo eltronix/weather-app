@@ -1,0 +1,8 @@
+[run]
+omit =
+    api/admin.py
+    api/apps.py
+    api/models.py
+    manage.py
+    weather_app/asgi.py
+    weather_app/wsgi.py 
