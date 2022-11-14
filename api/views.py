@@ -1,4 +1,3 @@
-from rest_framework import viewsets, status
 from .serializers import ForecastSerializer, ForecastInputSerializer
 from .services import WeatherService
 from rest_framework.views import APIView

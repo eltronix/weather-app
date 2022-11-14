@@ -1,7 +1,6 @@
 # As the project grows we can convert this to a package
 
 from django.test import SimpleTestCase
-from django.urls import reverse
 from rest_framework.test import APITestCase
 from unittest.mock import Mock, patch
 from .services import WeatherService

@@ -21,6 +21,7 @@ An API for fetching the weather forecast for a given city over a period of days.
     ```bash 
     pip install -r requirements.txt 
     ```
+4. (Optional) Add your own API key for [weatherapi.com](https://www.weatherapi.com/) to environment using the name `WEATHER_APP_API_KEY`. You'll only need to do this if the included key has expired.
 
 ## Usage
 
